@@ -9,7 +9,10 @@
       "commit": "299b5caa22876ef27dc8e9a5b7fd7bf93457b6f4"
     },
     "react/react.d.ts": {
-      "commit": "299b5caa22876ef27dc8e9a5b7fd7bf93457b6f4"
+      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
+    },
+    "react-native/react-native.d.ts": {
+      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
     }
   }
 }
