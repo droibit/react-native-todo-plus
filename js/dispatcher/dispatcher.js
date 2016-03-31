@@ -1,5 +1,7 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
+'use strict';
+
 import { Dispatcher } from 'flux';
 
 const dispatcher = new Dispatcher();
