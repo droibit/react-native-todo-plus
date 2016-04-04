@@ -7,7 +7,7 @@ export default class TodoActions {
 
   static create(text) {
     dispatcher.dispatch({
-      actionType: constants.TODO_CREATE,
+      type: constants.TODO_CREATE,
       text: text
     })
   }
