@@ -19,6 +19,15 @@ export default class TodoStore {
   static get todos() {
     return _todos;
   }
+  
+  static get areAllComplete() {
+    for (let todo in _todos) {
+      if (!todo.completed) {
+        return false;
+      }
+    }
+    return true;
+  }
 
   static emitChange() {
     _emitter.emit(CHANGE_EVENT);
