@@ -1,7 +1,7 @@
 'use strict';
 
 import dispatcher from '../dispatcher/dispatcher';
-import constants from '../constants/todo-constants';
+import constants from '../constant/todo-constants';
 
 export default class TodoActions {
 

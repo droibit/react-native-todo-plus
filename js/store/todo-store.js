@@ -6,7 +6,7 @@
 'use strict';
 
 import dispatcher from '../dispatcher/dispatcher';
-import constants from '../constants/todo-constants'
+import constants from '../constant/todo-constants'
 import {EventEmitter} from 'events';
 
 const _todos = {};
@@ -48,6 +48,10 @@ dispatcher.register(action => {
       break;
     case constants.TODO_COMPLETE:
       update(action.id, {completed: true});
+      TodoStore.emitChange();
+      break;
+    case constants.TODO_UNDO_COMPLETE:
+      update(action.id, {completed: false});
       TodoStore.emitChange();
       break;
     default:
