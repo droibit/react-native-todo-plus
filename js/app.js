@@ -2,7 +2,7 @@
 
 'use strict';
 
-import {Component, View} from 'react-native';
+import React, {Component, View} from 'react-native';
 import Header from './component/header';
 import MainSection from './component/main-section';
 

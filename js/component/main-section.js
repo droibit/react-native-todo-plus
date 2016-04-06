@@ -2,7 +2,7 @@
 
 'use strict';
 
-import {View, Component} from 'react-native';
+import React, {View, Component} from 'react-native';
 
 export default class MainSection extends Component {
 

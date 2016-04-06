@@ -1,6 +1,6 @@
 'use strict';
 
-import {keyMirror} from 'keymirror';
+import keyMirror from 'keymirror';
 
 const constants = keyMirror({
   TODO_CREATE: null,
