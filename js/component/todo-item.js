@@ -5,22 +5,24 @@
 
 import React, {
   StyleSheet, 
-  Component, 
+  Component,
+  View,
   Text
 } from 'react-native';
 
 export default class TodoItem extends Component {
 
   render() {
+    console.log("Called TodoItem#render()");
     return (
-      <View style={style.container}>
-        <Text style={styles.text} />
+      <View style={styles.container}>
+        <Text style={styles.text}>{this.props.todo.text}</Text>
       </View>
     );
   }
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     height: 72,
     paddingLeft: 16,
