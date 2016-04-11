@@ -20,7 +20,7 @@ export default class Header extends Component {
           autoFocus={true}
           placeholder={'What is the next plan?'}
           value={this.state.value}
-          onChange={text => this.setState({value: text})}
+          onChangeText={text => this.setState({value: text})}
           onBlur={() => this._add()}
         />
       </View>
@@ -32,6 +32,7 @@ export default class Header extends Component {
     if (title !== '') {
       TodoActions.create(title)
       this.setState({value: ''})
+      console.info('Added Todo: ${title}');
     }
   }
 }
