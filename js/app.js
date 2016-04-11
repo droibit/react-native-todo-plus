@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React, {Component, View, ListViewDataSource} from 'react-native';
+import React, {Component, View, ListView} from 'react-native';
 import TodoStore from './store/todo-store'
 import Header from './component/header';
 import MainSection from './component/main-section';
@@ -12,9 +12,11 @@ export default class TodoApp extends Component {
   constructor(props) {
     super(props);
 
-    this.state.todos = new ListViewDataSource({
-      rowHasChanged: (lhs, rhs) => lhs !== rhs,
-    });
+    this.state = {
+      todos: new ListView.DataSource({
+        rowHasChanged: (lhs, rhs) => lhs !== rhs,
+      }),
+    }
   }
 
   componentDidMount() {

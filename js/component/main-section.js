@@ -6,15 +6,15 @@ import React, {
   Component,
   ReactPropTypes,
   View,
-  ListView,
-  RecyclerViewBackedScrollView} from 'react-native';
+  ListView
+} from 'react-native';
 import TodoItem from './todo-item'
 
 export default class MainSection extends Component {
 
   static get propTypes() {
     return {
-      todos: ReactPropTypes.object.isRequired,
+      // todos: ReactPropTypes.object.isRequired,
     }
   }
 
@@ -25,14 +25,6 @@ export default class MainSection extends Component {
           dataSource={this.props.todos}
           renderRow={(rowData) => <TodoItem todo={rowData} />}
           />
-      </View>
-    );
-  }
-
-  _renderRow(rowData) {
-    return (
-      <View>
-
       </View>
     );
   }
