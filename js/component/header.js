@@ -2,8 +2,13 @@
 
 'use strict';
 
-import React, {Component, View, TextInput, StyleSheet} from 'react-native';
 import TodoActions from "../action/todo-actions";
+import React, {
+  Component, 
+  View, 
+  TextInput, 
+  StyleSheet
+} from 'react-native';
 
 export default class Header extends Component {
 

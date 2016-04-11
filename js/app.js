@@ -2,10 +2,14 @@
 
 'use strict';
 
-import React, {Component, View, ListView} from 'react-native';
 import TodoStore from './store/todo-store'
 import Header from './component/header';
 import MainSection from './component/main-section';
+import React, {
+  Component,
+  View,
+  ListView
+} from 'react-native';
 
 export default class TodoApp extends Component {
 

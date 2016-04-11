@@ -2,13 +2,13 @@
 
 'use strict';
 
+import TodoItem from './todo-item'
 import React, {
   Component,
   ReactPropTypes,
   View,
   ListView
 } from 'react-native';
-import TodoItem from './todo-item'
 
 export default class MainSection extends Component {
 

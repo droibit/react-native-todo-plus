@@ -3,7 +3,11 @@
  */
 'use strict';
 
-import React, {StyleSheet, Component, Text} from 'react-native';
+import React, {
+  StyleSheet, 
+  Component, 
+  Text
+} from 'react-native';
 
 export default class TodoItem extends Component {
 
