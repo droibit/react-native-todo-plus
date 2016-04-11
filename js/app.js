@@ -2,9 +2,9 @@
 
 'use strict';
 
-import TodoStore from './store/todo-store'
 import Header from './component/header';
 import MainSection from './component/main-section';
+import TodoStore from './store/todo-store'
 import React, {
   Component,
   View,
@@ -25,13 +25,13 @@ export default class TodoApp extends Component {
 
   componentDidMount() {
     this.setState({
-      todos: this.state.todos.cloneWithRows(TodoStore.todos),
+      todos: this.state.todos.cloneWithRows(TodoStore.getTodos()),
     });
-    TodoStore.addChangeListener(this._onChanged);
+    TodoStore.addChangeListener(()=>this._onChanged());
   }
 
   componentWillUnmount() {
-    TodoStore.removeChangeListener(this._onChanged);
+    TodoStore.removeChangeListener(()=>this._onChanged());
   }
   
   render() {
@@ -44,8 +44,9 @@ export default class TodoApp extends Component {
   }
 
   _onChanged() {
+    console.log("Called TodoApp#_onChanged");
     this.setState({
-      todos: this.state.todos.cloneWithRows(TodoStore.todos),
+      todos: this.state.todos.cloneWithRows(TodoStore.getTodos()),
     });
   }
 } 

@@ -10,13 +10,12 @@ import constants from '../constant/todo-constants'
 import {EventEmitter} from 'events';
 
 const _todos = {};
-const _emitter = new EventEmitter();
 
 const CHANGE_EVENT = 'change';
 
-export default class TodoStore {
+class _TodoStore extends EventEmitter {
 
-  static get todos() {
+  getTodos() {
     // ListViewを使う場合、配列にしておかないといけない模様。
     const todos = [];
     for (let key in _todos) {
@@ -25,7 +24,7 @@ export default class TodoStore {
     return todos;
   }
   
-  static get areAllComplete() {
+  areAllCompleted() {
     for (let todo in _todos) {
       if (!todo.completed) {
         return false;
@@ -34,18 +33,21 @@ export default class TodoStore {
     return true;
   }
 
-  static emitChange() {
-    _emitter.emit(CHANGE_EVENT);
+  emitChange() {
+    this.emit(CHANGE_EVENT);
   }
 
-  static addChangeListener(callback) {
-    _emitter.on(CHANGE_EVENT, callback);
+  addChangeListener(callback) {
+    this.on(CHANGE_EVENT, callback);
   }
 
-  static removeChangeListener(callback) {
-    _emitter.removeListener(CHANGE_EVENT, callback);
+  removeChangeListener(callback) {
+    this.removeListener(CHANGE_EVENT, callback);
   }
 }
+
+const TodoStore = new _TodoStore();
+export default TodoStore;
 
 dispatcher.register(action => {
   switch (action.type) {
@@ -80,6 +82,7 @@ function create(text) {
     completed: false,
     text: text,
   }
+  console.log('Created TODO: ' + text);
 }
 
 function update(id, updates) {
