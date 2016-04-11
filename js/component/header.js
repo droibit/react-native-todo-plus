@@ -26,7 +26,8 @@ export default class Header extends Component {
           placeholder={'What is the next plan?'}
           value={this.state.value}
           onChangeText={text => this.setState({value: text})}
-          onBlur={() => this._add()}
+          onSubmitEditing={() => this._add()}
+          multiline={false}
         />
       </View>
     );
@@ -35,9 +36,9 @@ export default class Header extends Component {
   _add() {
     const title = this.state.value;
     if (title !== '') {
+      console.info('Inputed TODO: ' + title);
       TodoActions.create(title)
       this.setState({value: ''})
-      console.info('Added Todo: ${title}');
     }
   }
 }
