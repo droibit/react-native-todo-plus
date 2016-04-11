@@ -17,7 +17,12 @@ const CHANGE_EVENT = 'change';
 export default class TodoStore {
 
   static get todos() {
-    return _todos;
+    // ListViewを使う場合、配列にしておかないといけない模様。
+    const todos = [];
+    for (let key in _todos) {
+      todos.push(_todos[key]);
+    }
+    return todos;
   }
   
   static get areAllComplete() {
