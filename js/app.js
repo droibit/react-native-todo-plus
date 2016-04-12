@@ -7,7 +7,9 @@ import MainSection from './component/main-section';
 import TodoStore from './store/todo-store'
 import React, {
   Component,
+  StyleSheet,
   View,
+  ToolbarAndroid,
   ListView
 } from 'react-native';
 
@@ -37,6 +39,11 @@ export default class TodoApp extends Component {
   render() {
     return (
       <View>
+        <ToolbarAndroid
+          title={`React Native Todo`}
+          titleColor={`#FFFFFF`}
+          style={styles.toolbar}
+        />
         <Header />
         <MainSection todos={this.state.todos} />
       </View>
@@ -49,4 +56,11 @@ export default class TodoApp extends Component {
       todos: this.state.todos.cloneWithRows(TodoStore.getTodos()),
     });
   }
-} 
+}
+
+var styles = StyleSheet.create({
+  toolbar: {
+    backgroundColor: `#607D8B`,
+    height: 56,
+  },
+});
