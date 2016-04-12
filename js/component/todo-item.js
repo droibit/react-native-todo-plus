@@ -7,6 +7,7 @@ import React, {
   StyleSheet, 
   Component,
   View,
+  TouchableHighlight,
   Text
 } from 'react-native';
 
@@ -15,10 +16,17 @@ export default class TodoItem extends Component {
   render() {
     console.log(`Called TodoItem#render()`);
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>{this.props.todo.text}</Text>
-      </View>
+      <TouchableHighlight underlayColor={`#CFD8DC`} onPress={() => this._onPressRow()}>
+        <View>
+          <View style={styles.container}>
+            <Text style={styles.text}>{this.props.todo.text}</Text>
+          </View>
+        </View>
+      </TouchableHighlight>
     );
+  }
+
+  _onPressRow() {
   }
 }
 
@@ -29,7 +37,7 @@ const styles = StyleSheet.create({
     paddingRight: 16,
   },
   text: {
-    fontSize: 16,
+    fontSize: 18,
     textAlign: 'left',
   }
 });
