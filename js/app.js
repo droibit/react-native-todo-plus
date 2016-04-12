@@ -27,7 +27,7 @@ export default class TodoApp extends Component {
 
   componentDidMount() {
     this.setState({
-      todos: this.state.todos.cloneWithRows(TodoStore.getTodos()),
+      todos: this.state.todos.cloneWithRows(TodoStore.getMockTodos()),
     });
     TodoStore.addChangeListener(()=>this._onChanged());
   }

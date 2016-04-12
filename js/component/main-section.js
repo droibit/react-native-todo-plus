@@ -8,7 +8,7 @@ import React, {
   ReactPropTypes,
   StyleSheet,
   View,
-  ListView
+  ListView,
 } from 'react-native';
 
 export default class MainSection extends Component {
@@ -21,12 +21,13 @@ export default class MainSection extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <ListView
           dataSource={this.props.todos}
           renderRow={(rowData) => <TodoItem todo={rowData} />}
           renderSeparator={(sectionID, rowID) => <View key={`${sectionID}-${rowID}`} style={styles.separator} />}
-        />
+          showsVerticalScrollIndicator={true}
+          />
       </View>
     );
   }

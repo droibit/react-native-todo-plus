@@ -17,10 +17,8 @@ export default class TodoItem extends Component {
     console.log(`Called TodoItem#render()`);
     return (
       <TouchableHighlight underlayColor={`#CFD8DC`} onPress={() => this._onPressRow()}>
-        <View>
-          <View style={styles.container}>
-            <Text style={styles.text}>{this.props.todo.text}</Text>
-          </View>
+        <View style={styles.container}>
+          <Text style={styles.text}>{this.props.todo.text}</Text>
         </View>
       </TouchableHighlight>
     );
@@ -32,6 +30,7 @@ export default class TodoItem extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     height: 60,
     paddingLeft: 16,
     paddingRight: 16,
