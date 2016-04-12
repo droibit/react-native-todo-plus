@@ -13,7 +13,7 @@ import React, {
 export default class TodoItem extends Component {
 
   render() {
-    console.log("Called TodoItem#render()");
+    console.log(`Called TodoItem#render()`);
     return (
       <View style={styles.container}>
         <Text style={styles.text}>{this.props.todo.text}</Text>
@@ -24,7 +24,7 @@ export default class TodoItem extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: 72,
+    height: 60,
     paddingLeft: 16,
     paddingRight: 16,
   },

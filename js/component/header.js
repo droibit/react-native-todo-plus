@@ -36,8 +36,8 @@ export default class Header extends Component {
   _add() {
     const title = this.state.value;
     if (title !== '') {
-      console.info('Inputed TODO: ' + title);
-      TodoActions.create(title)
+      console.info(`Inputed TODO: ${title}`);
+      TodoActions.create(title);
       this.setState({value: ''})
     }
   }
@@ -49,4 +49,4 @@ const style = StyleSheet.create({
     marginLeft: 16,
     marginRight: 16,
   }
-})
+});

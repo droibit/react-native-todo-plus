@@ -71,7 +71,7 @@ dispatcher.register(action => {
       TodoStore.emitChange();
       break;
     default:
-      throw new Error("Unknown action type: ${action.type}")
+      throw new Error(`Unknown action type: ${action.type}`)
   }
 });
 
@@ -81,13 +81,13 @@ function create(text) {
     id: id,
     completed: false,
     text: text,
-  }
-  console.log('Created TODO: ' + text);
+  };
+  console.log(`Created TODO: ${text}`);
 }
 
 function update(id, updates) {
   _todos[id] = Object.assign({}, _todos[id], updates);
-  console.log('Updated: ${_todos[id]}')
+  console.log(`Updated: ${_todos[id]}`)
 }
 
 function destroy(id) {
