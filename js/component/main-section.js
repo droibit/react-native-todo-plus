@@ -20,6 +20,7 @@ export default class MainSection extends Component {
           renderRow={(rowData) => <TodoItem todo={rowData} />}
           renderSeparator={(sectionID, rowID) => <View key={`${sectionID}-${rowID}`} style={styles.separator} />}
           showsVerticalScrollIndicator={true}
+          enableEmptySections={true}
           />
       </View>
     );
