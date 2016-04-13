@@ -10,6 +10,7 @@ import React, {
   StyleSheet,
   View,
   ToolbarAndroid,
+  StatusBar,
   ListView
 } from 'react-native';
 
@@ -39,6 +40,7 @@ export default class TodoApp extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar backgroundColor={`#455A64`} />
         <ToolbarAndroid
           title={`React Native Todo`}
           titleColor={`#FFFFFF`}
@@ -59,11 +61,11 @@ export default class TodoApp extends Component {
 }
 
 var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   toolbar: {
     backgroundColor: `#607D8B`,
     height: 56,
+  },
+  container: {
+    flex: 1,
   },
 });
