@@ -18,7 +18,10 @@ export default class TodoItem extends Component {
     return (
       <TouchableHighlight underlayColor={`#CFD8DC`} onPress={() => this._onPressRow()}>
         <View style={styles.container}>
-          <Text style={styles.text}>{this.props.todo.text}</Text>
+          <Text
+            style={styles.text}
+            numberOfLines={1}
+          >{this.props.todo.text}</Text>
         </View>
       </TouchableHighlight>
     );
@@ -31,12 +34,14 @@ export default class TodoItem extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: `row`,
+    flexWrap: `nowrap`,
+    justifyContent: `flex-start`,
+    alignItems: `center`,
     height: 60,
-    paddingLeft: 16,
-    paddingRight: 16,
+    paddingHorizontal: 16,
   },
   text: {
     fontSize: 18,
-    textAlign: 'left',
   }
 });
