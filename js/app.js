@@ -27,7 +27,7 @@ export default class TodoApp extends Component {
 
   componentDidMount() {
     this.setState({
-      todos: this.state.todos.cloneWithRows(TodoStore.getMockTodos()),
+      todos: this.state.todos.cloneWithRows(TodoStore.getMockTodos(15)),
     });
     TodoStore.addChangeListener(()=>this._onChanged());
   }
@@ -38,7 +38,7 @@ export default class TodoApp extends Component {
   
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <ToolbarAndroid
           title={`React Native Todo`}
           titleColor={`#FFFFFF`}
@@ -59,6 +59,9 @@ export default class TodoApp extends Component {
 }
 
 var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   toolbar: {
     backgroundColor: `#607D8B`,
     height: 56,

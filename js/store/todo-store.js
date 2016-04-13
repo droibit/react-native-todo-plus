@@ -24,18 +24,12 @@ class _TodoStore extends EventEmitter {
     return todos;
   }
   
-  getMockTodos() {
-    return [
-      {text: "item-1"},
-      {text: "item-1"},
-      {text: "item-1"},
-      {text: "item-1"},
-      {text: "item-1"},
-      {text: "item-1"},
-      {text: "item-1"},
-      {text: "item-1"},
-      {text: "item-1"},
-    ];
+  getMockTodos(max) {
+    const items = [];
+    for (let i = 0; i < max; i++) {
+      items.push({text: `Item-${i}`});
+    }
+    return items;
   }
   
   areAllCompleted() {
