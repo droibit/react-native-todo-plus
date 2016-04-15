@@ -29,7 +29,7 @@ class CheckboxAndroid extends Component {
     return (
       <Checkbox
         // {...this.props}
-        style={this.props.style}
+        style={[{width: 32, height: 32},this.props.style]}
         ref={ref => this._checkbox = ref}
         on={this.props.value}
         enabled={!this.props.disabled}

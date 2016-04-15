@@ -40,10 +40,10 @@ export default class TodoApp extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor={`#455A64`} />
+        <StatusBar backgroundColor={'#455A64'} />
         <ToolbarAndroid
-          title={`React Native Todo`}
-          titleColor={`#FFFFFF`}
+          title={'React Native Todo'}
+          titleColor={'#FFFFFF'}
           style={styles.toolbar}
         />
         <Header />
@@ -62,7 +62,7 @@ export default class TodoApp extends Component {
 
 var styles = StyleSheet.create({
   toolbar: {
-    backgroundColor: `#607D8B`,
+    backgroundColor: '#607D8B',
     height: 56,
   },
   container: {
