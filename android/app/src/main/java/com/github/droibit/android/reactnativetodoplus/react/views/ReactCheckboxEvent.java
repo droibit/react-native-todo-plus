@@ -10,8 +10,8 @@ import com.facebook.react.uimanager.events.RCTEventEmitter;
  */
 /*package*/ class ReactCheckboxEvent extends Event<ReactCheckboxEvent> {
 
-    // FIXME:
-    private static final String EVENT_NAME = "topChanged";
+    // @see UIManagerModuleConstants.java
+    private static final String EVENT_NAME = "topChange";
     private final boolean isChecked;
 
     public ReactCheckboxEvent(int viewId, long timestampMs, boolean isChecked) {
@@ -39,7 +39,7 @@ import com.facebook.react.uimanager.events.RCTEventEmitter;
         return eventData;
     }
 
-    public boolean isChecked() {
+    public boolean getIsChecked() {
         return isChecked;
     }
 }

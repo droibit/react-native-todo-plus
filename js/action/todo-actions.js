@@ -11,4 +11,12 @@ export default class TodoActions {
       text: text
     })
   }
+  
+  static updateCompleted(id, on) {
+    const actionType = on ? constants.TODO_COMPLETE : constants.TODO_UNDO_COMPLETE;
+    dispatcher.dispatch({
+      type: actionType,
+      id: id,
+    })
+  }
 }

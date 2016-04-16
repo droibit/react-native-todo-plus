@@ -12,6 +12,7 @@ import React, {
 
 const Checkbox = requireNativeComponent('CheckboxAndroid', CheckboxAndroid, {
   nativeOnly: {
+    onChange: true,
     on: true,
     enabled: true,
   }
@@ -28,12 +29,11 @@ class CheckboxAndroid extends Component {
   render() {
     return (
       <Checkbox
-        // {...this.props}
         style={[{width: 32, height: 32},this.props.style]}
         ref={ref => this._checkbox = ref}
         on={this.props.value}
         enabled={!this.props.disabled}
-        onChange={(event) => this._onChange(event)}
+        onChange={event => this._onChange(event)}
         />
     );
   }
@@ -42,6 +42,8 @@ class CheckboxAndroid extends Component {
     if (this.props.value === event.nativeEvent.value || this.props.disabled) {
       return;
     }
+    console.log(`checkbox received ${event.nativeEvent.value}`);
+    console.log(`currently props.value: ${this.props.value}`);
 
     this.props.onChange && this.props.onChange(event);
     this.props.onValueChange && this.props.onValueChange(event.nativeEvent.value);

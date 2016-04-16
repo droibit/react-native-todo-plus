@@ -6,7 +6,7 @@
 'use strict';
 
 import dispatcher from '../dispatcher/dispatcher';
-import constants from '../constant/todo-constants'
+import constants from '../constant/todo-constants';
 import {EventEmitter} from 'events';
 
 const _todos = {};
@@ -95,7 +95,7 @@ function create(text) {
 
 function update(id, updates) {
   _todos[id] = Object.assign({}, _todos[id], updates);
-  console.log(`Updated: ${_todos[id]}`)
+  console.log(`Updated: ${id}-${updates.completed}`)
 }
 
 function destroy(id) {

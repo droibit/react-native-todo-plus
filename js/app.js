@@ -53,10 +53,10 @@ export default class TodoApp extends Component {
   }
 
   _onChanged() {
-    console.log("Called TodoApp#_onChanged");
     this.setState({
       todos: this.state.todos.cloneWithRows(TodoStore.getTodos()),
     });
+    console.log("Called TodoApp#_onChanged");
   }
 }
 
