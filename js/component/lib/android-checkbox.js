@@ -65,4 +65,4 @@ CheckboxAndroid.defaultProps = {
   disabled: false,
 };
 
-export default CheckboxAndroid;
+export {CheckboxAndroid};

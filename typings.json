@@ -3,6 +3,7 @@
   "version": false,
   "dependencies": {},
   "ambientDependencies": {
+    "android-checkbox": "file:js/component/lib/android-checkbox.d.ts",
     "flux": "registry:dt/flux#0.0.0+20160317120654",
     "react": "registry:dt/react#0.14.0+20160319053454",
     "react-native": "registry:dt/react-native#0.19.0+20160404033213"
