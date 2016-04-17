@@ -4,12 +4,12 @@
 
 import Header from './component/header';
 import MainSection from './component/main-section';
-import TodoStore from './store/todo-store'
+import Toolbar from './component/toolbar';
+import TodoStore from './store/todo-store';
 import React, {
   Component,
   StyleSheet,
   View,
-  ToolbarAndroid,
   StatusBar,
   ListView
 } from 'react-native';
@@ -41,11 +41,7 @@ export default class TodoApp extends Component {
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor={'#455A64'} />
-        <ToolbarAndroid
-          title={'React Native Todo'}
-          titleColor={'#FFFFFF'}
-          style={styles.toolbar}
-        />
+        <Toolbar />
         <Header />
         <MainSection todos={this.state.todos} />
       </View>
@@ -61,10 +57,6 @@ export default class TodoApp extends Component {
 }
 
 var styles = StyleSheet.create({
-  toolbar: {
-    backgroundColor: '#607D8B',
-    height: 56,
-  },
   container: {
     flex: 1,
   },

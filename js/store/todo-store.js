@@ -66,16 +66,20 @@ dispatcher.register(action => {
         TodoStore.emitChange();
       }
       break;
-    case constants.TODO_DESTROY:
-      destroy(action.id);
-      TodoStore.emitChange();
-      break;
     case constants.TODO_COMPLETE:
       update(action.id, {completed: true});
       TodoStore.emitChange();
       break;
     case constants.TODO_UNDO_COMPLETE:
       update(action.id, {completed: false});
+      TodoStore.emitChange();
+      break;
+    case constants.TODO_COMPLETE_ALL:
+      completeAll();
+      TodoStore.emitChange();
+      break;
+    case constants.TODO_CLEAR_IF_COMPLETED:
+      clearIfCompleted();
       TodoStore.emitChange();
       break;
     default:
@@ -98,6 +102,16 @@ function update(id, updates) {
   console.log(`Updated: ${id}-${updates.completed}`)
 }
 
-function destroy(id) {
-  delete _todos[id];
+function completeAll() {
+  for (let key in _todos) {
+    update(key, {completed: true});
+  }
+}
+
+function clearIfCompleted() {
+  for (let key in _todos) {
+    if (_todos[key].completed) {
+      delete _todos[key];
+    }
+  }
 }
