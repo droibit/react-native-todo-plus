@@ -1,9 +1,8 @@
-/**
- * Created by kumagai on 2016/04/11.
- */
+/// <reference path="../../typings/main.d.ts" />
+
 'use strict';
 
-import CheckboxAndroid from './lib/android-checkbox';
+import {CheckboxAndroid} from './lib/android-checkbox'; // FIXME: default
 import TodoActions from '../action/todo-actions';
 import React, {
   StyleSheet, 
@@ -16,7 +15,9 @@ import React, {
 export default class TodoItem extends Component {
 
   render() {
-    console.log('Called TodoItem#render');
+    const textStyle = this.props.todo.completed ?
+      styles.completedText :
+      styles.notCompletedText;
     return (
       <TouchableHighlight 
         underlayColor={'#CFD8DC'} 
@@ -28,7 +29,7 @@ export default class TodoItem extends Component {
             onValueChange={(value) => this._onToggleCompleted(value)}
           />
           <Text
-            style={styles.text}
+            style={textStyle}
             numberOfLines={1}>
             {this.props.todo.text}
           </Text>
@@ -56,7 +57,11 @@ const styles = StyleSheet.create({
     height: 60,
     paddingHorizontal: 16,
   },
-  text: {
+  completedText: {
+    fontSize: 18,
+    color: '#B0BEC5'
+  },
+  notCompletedText: {
     fontSize: 18,
   },
   completeBox: {
