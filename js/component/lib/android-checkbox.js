@@ -14,7 +14,7 @@ const Checkbox = requireNativeComponent('CheckboxAndroid', CheckboxAndroid, {
   nativeOnly: {
     onChange: true,
     on: true,
-    enabled: true,
+    enabled: true
   }
 });
 
@@ -57,12 +57,12 @@ CheckboxAndroid.propTypes = {
 
   value: PropTypes.bool,
   disabled: PropTypes.bool,
-  onValueChange: PropTypes.func,
+  onValueChange: PropTypes.func
 };
 
 CheckboxAndroid.defaultProps = {
   value: false,
-  disabled: false,
+  disabled: false
 };
 
 export {CheckboxAndroid};

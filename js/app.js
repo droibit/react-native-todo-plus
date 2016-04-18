@@ -21,20 +21,20 @@ export default class TodoApp extends Component {
 
     this.state = {
       todos: new ListView.DataSource({
-        rowHasChanged: (lhs, rhs) => lhs !== rhs,
-      }),
+        rowHasChanged: (lhs, rhs) => lhs !== rhs
+      })
     }
   }
 
   componentDidMount() {
     this.setState({
-      todos: this.state.todos.cloneWithRows(TodoStore.getTodos()),
+      todos: this.state.todos.cloneWithRows(TodoStore.getTodos())
     });
-    TodoStore.addChangeListener(()=>this._onChanged());
+    TodoStore.addChangeListener(() => this._onChanged());
   }
 
   componentWillUnmount() {
-    TodoStore.removeChangeListener(()=>this._onChanged());
+    TodoStore.removeChangeListener(() => this._onChanged());
   }
   
   render() {
@@ -50,7 +50,7 @@ export default class TodoApp extends Component {
 
   _onChanged() {
     this.setState({
-      todos: this.state.todos.cloneWithRows(TodoStore.getTodos()),
+      todos: this.state.todos.cloneWithRows(TodoStore.getTodos())
     });
     console.log("Called TodoApp#_onChanged");
   }
@@ -58,6 +58,6 @@ export default class TodoApp extends Component {
 
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
+    flex: 1
+  }
 });

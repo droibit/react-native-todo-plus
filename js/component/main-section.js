@@ -29,10 +29,10 @@ export default class MainSection extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   separator: {
     height: 1,
-    backgroundColor: '#CCCCCC',
+    backgroundColor: '#CCCCCC'
   }
 });

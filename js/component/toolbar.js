@@ -56,8 +56,8 @@ class Toolbar extends Component {
 var styles = StyleSheet.create({
   toolbar: {
     backgroundColor: '#607D8B',
-    height: 56,
-  },
+    height: 56
+  }
 });
 
 export default Toolbar;

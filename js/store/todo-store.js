@@ -31,15 +31,6 @@ class _TodoStore extends EventEmitter {
     }
     return items;
   }
-  
-  areAllCompleted() {
-    for (let todo in _todos) {
-      if (!todo.completed) {
-        return false;
-      }
-    }
-    return true;
-  }
 
   emitChange() {
     this.emit(CHANGE_EVENT);
@@ -92,7 +83,7 @@ function create(text) {
   _todos[id] = {
     id: id,
     completed: false,
-    text: text,
+    text: text
   };
   console.log(`Created TODO: ${text}`);
 }

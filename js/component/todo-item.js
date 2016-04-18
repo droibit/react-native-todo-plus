@@ -55,14 +55,14 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     height: 60,
-    paddingHorizontal: 16,
+    paddingHorizontal: 16
   },
   completedText: {
     fontSize: 18,
     color: '#B0BEC5'
   },
   notCompletedText: {
-    fontSize: 18,
+    fontSize: 18
   },
   completeBox: {
     marginRight: 8
