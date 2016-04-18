@@ -31,8 +31,9 @@ class Toolbar extends Component {
     // FIXME: titleColor & iconColor
     return (
       <ToolbarAndroid
-        title={'React Native Todo'}
+        title={'TODO'}
         titleColor={'#FFFFFF'}
+        overflowIcon={require('./img/overflow.png')}
         style={styles.toolbar}
         actions={actions}
         onActionSelected={position => this._onActionSelected(position)}
