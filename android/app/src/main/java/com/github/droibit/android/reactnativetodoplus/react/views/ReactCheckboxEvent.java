@@ -38,8 +38,4 @@ import com.facebook.react.uimanager.events.RCTEventEmitter;
         eventData.putBoolean("value", isChecked);
         return eventData;
     }
-
-    public boolean getIsChecked() {
-        return isChecked;
-    }
 }
