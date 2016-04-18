@@ -49,7 +49,6 @@ class Toolbar extends Component {
       case POSITION_CLEAR:
         TodoActions.clearIfCompleted();
         break;
-
     }
   }
 }

@@ -6,12 +6,14 @@ import Header from './component/header';
 import MainSection from './component/main-section';
 import Toolbar from './component/toolbar';
 import TodoStore from './store/todo-store';
+import constants from './constant/todo-constants'
 import React, {
   Component,
   StyleSheet,
   View,
   StatusBar,
-  ListView
+  ListView,
+  ToastAndroid,
 } from 'react-native';
 
 export default class TodoApp extends Component {
@@ -30,11 +32,11 @@ export default class TodoApp extends Component {
     this.setState({
       todos: this.state.todos.cloneWithRows(TodoStore.getTodos())
     });
-    TodoStore.addChangeListener(() => this._onChanged());
+    TodoStore.addChangeListener((event) => this._onChanged(event));
   }
 
   componentWillUnmount() {
-    TodoStore.removeChangeListener(() => this._onChanged());
+    TodoStore.removeChangeListener((event) => this._onChanged(event));
   }
   
   render() {
@@ -48,11 +50,23 @@ export default class TodoApp extends Component {
     );
   }
 
-  _onChanged() {
+  _onChanged(event) {
     this.setState({
       todos: this.state.todos.cloneWithRows(TodoStore.getTodos())
     });
     console.log("Called TodoApp#_onChanged");
+
+    // TODO: Refactoring
+    if (typeof event !== "undefined" &&
+        event.type === constants.TODO_CLEAR_IF_COMPLETED) {
+      this._showCompletedToast(event);
+    }
+  }
+
+  _showCompletedToast(event) {
+    if (event.deleted) {
+      ToastAndroid.show("Clear completed TODO", ToastAndroid.SHORT);
+    }
   }
 }
 

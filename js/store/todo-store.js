@@ -23,17 +23,9 @@ class _TodoStore extends EventEmitter {
     }
     return todos;
   }
-  
-  getMockTodos(max) {
-    const items = [];
-    for (let i = 0; i < max; i++) {
-      items.push({text: `Item-${i}`});
-    }
-    return items;
-  }
 
-  emitChange() {
-    this.emit(CHANGE_EVENT);
+  emitChange(event) {
+    this.emit(CHANGE_EVENT, event);
   }
 
   addChangeListener(callback) {
@@ -70,8 +62,8 @@ dispatcher.register(action => {
       TodoStore.emitChange();
       break;
     case constants.TODO_CLEAR_IF_COMPLETED:
-      clearIfCompleted();
-      TodoStore.emitChange();
+      let deleted = clearIfCompleted();
+      TodoStore.emitChange({type: constants.TODO_CLEAR_IF_COMPLETED, deleted});
       break;
     default:
       throw new Error(`Unknown action type: ${action.type}`)
@@ -100,9 +92,12 @@ function completeAll() {
 }
 
 function clearIfCompleted() {
+  var deleted = false;
   for (let key in _todos) {
     if (_todos[key].completed) {
       delete _todos[key];
+      deleted = true;
     }
   }
+  return deleted;
 }
