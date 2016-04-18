@@ -6,8 +6,10 @@ import TodoItem from './todo-item'
 import React, {
   Component,
   StyleSheet,
+  PropTypes,
   View,
   ListView,
+  ListViewDataSource
 } from 'react-native';
 
 export default class MainSection extends Component {
@@ -26,6 +28,10 @@ export default class MainSection extends Component {
     );
   }
 }
+
+MainSection.propTypes = {
+  todos: PropTypes.instanceOf(ListViewDataSource)
+};
 
 const styles = StyleSheet.create({
   container: {

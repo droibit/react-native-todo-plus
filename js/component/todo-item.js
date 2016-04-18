@@ -7,6 +7,7 @@ import TodoActions from '../action/todo-actions';
 import React, {
   StyleSheet, 
   Component,
+  PropTypes,
   View,
   TouchableHighlight,
   Text,
@@ -46,6 +47,14 @@ export default class TodoItem extends Component {
     TodoActions.updateCompleted(this.props.todo.id, value);
   }
 }
+
+TodoItem.propTypes = {
+  todo: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    completed: PropTypes.bool.isRequired,
+    text: PropTypes.string.isRequired
+  }).isRequired
+};
 
 const styles = StyleSheet.create({
   container: {
