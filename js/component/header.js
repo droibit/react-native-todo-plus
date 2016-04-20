@@ -1,5 +1,6 @@
 /// <reference path="../typings/main.d.ts" />
 
+/* @flow */
 'use strict';
 
 import TodoActions from "../action/todo-actions";
@@ -11,6 +12,10 @@ import React, {
 } from 'react-native';
 
 export default class Header extends Component {
+  //noinspection JSDuplicatedDeclaration
+  state: {
+    value: string;
+  };
 
   constructor(props) {
     super(props);

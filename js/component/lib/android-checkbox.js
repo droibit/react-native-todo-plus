@@ -1,6 +1,4 @@
-/**
- * Created by kumagai on 2016/04/14.
- */
+/* @flow */
 'use strict';
 
 import React, {
@@ -19,6 +17,14 @@ const Checkbox = requireNativeComponent('CheckboxAndroid', CheckboxAndroid, {
 });
 
 class CheckboxAndroid extends Component {
+  //noinspection JSDuplicatedDeclaration
+  props: {
+    value: boolean;
+    disabled: boolean;
+    onChange?: (event: any) => void;
+    onValueChange?: (value: boolean) => void;
+  };
+  _checkbox: any;
 
   constructor(props) {
     super(props);
@@ -29,7 +35,7 @@ class CheckboxAndroid extends Component {
   render() {
     return (
       <Checkbox
-        style={[{width: 32, height: 32},this.props.style]}
+        style={[{width: 32, height: 32}, this.props.style]}
         ref={ref => this._checkbox = ref}
         on={this.props.value}
         enabled={!this.props.disabled}
@@ -42,8 +48,6 @@ class CheckboxAndroid extends Component {
     if (this.props.value === event.nativeEvent.value || this.props.disabled) {
       return;
     }
-    console.log(`checkbox received ${event.nativeEvent.value}`);
-    console.log(`currently props.value: ${this.props.value}`);
 
     this.props.onChange && this.props.onChange(event);
     this.props.onValueChange && this.props.onValueChange(event.nativeEvent.value);

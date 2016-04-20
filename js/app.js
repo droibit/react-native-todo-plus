@@ -1,5 +1,6 @@
 /// <reference path="../typings/main.d.ts" />
 
+/* @flow */
 'use strict';
 
 import Header from './component/header';
@@ -17,10 +18,15 @@ import React, {
 } from 'react-native';
 
 type Event = {
-  type: ?string
+  type?: string,
+  deleted?: boolean
 };
 
 export default class TodoApp extends Component {
+  //noinspection JSDuplicatedDeclaration
+  state: {
+    todos: ListView.DataSource;
+  };
   
   constructor(props) {
     super(props);
@@ -54,7 +60,7 @@ export default class TodoApp extends Component {
     );
   }
 
-  _onChanged(event: ?Event) {
+  _onChanged(event?: Event) {
     this.setState({
       todos: this.state.todos.cloneWithRows(TodoStore.getTodos())
     });
@@ -67,7 +73,7 @@ export default class TodoApp extends Component {
     }
   }
 
-  _showCompletedToast(event: ?Event) {
+  _showCompletedToast(event: Event) {
     if (event.deleted) {
       ToastAndroid.show("Clear completed TODO", ToastAndroid.SHORT);
     }

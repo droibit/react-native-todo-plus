@@ -1,5 +1,6 @@
 /// <reference path="../typings/main.d.ts" />
 
+/* @flow */
 'use strict';
 
 import TodoItem from './todo-item'
@@ -13,6 +14,10 @@ import React, {
 } from 'react-native';
 
 export default class MainSection extends Component {
+  //noinspection JSDuplicatedDeclaration
+  props: {
+    todos: ListViewDataSource;
+  };
   
   render() {
     return (

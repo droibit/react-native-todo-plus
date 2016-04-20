@@ -1,6 +1,6 @@
 /// <reference path="../../typings/main.d.ts" />
 
-// @flow
+/* @flow */
 'use strict';
 
 import TodoActions from "../action/todo-actions";
@@ -11,9 +11,9 @@ import React, {
 } from 'react-native';
 
 type Action = {
-  title: string,
-  icon: any,
-  show: ?string
+  title: string;
+  icon?: any;
+  show: string;
 };
 
 const POSITION_COMPLETE_ALL: number = 0;

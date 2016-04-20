@@ -1,7 +1,9 @@
 /// <reference path="../../typings/main.d.ts" />
 
-// @flow
+/* @flow */
 'use strict';
+
+import type {Todo} from '../store/todo-store';
 
 import {CheckboxAndroid} from './lib/android-checkbox'; // FIXME: default
 import TodoActions from '../action/todo-actions';
@@ -15,6 +17,10 @@ import React, {
 } from 'react-native';
 
 export default class TodoItem extends Component {
+  //noinspection JSDuplicatedDeclaration
+  props: {
+    todo: Todo;
+  };
 
   render() {
     const textStyle = this.props.todo.completed ?

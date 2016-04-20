@@ -1,19 +1,19 @@
 /// <reference path="../../typings/main.d.ts" />
 
-// @flow
+/* @flow */
 'use strict';
 
 import dispatcher from '../dispatcher/dispatcher';
 import constants from '../constant/todo-constants';
 import {EventEmitter} from 'events';
 
-type Todo = {
-  id: number,
-  completed: boolean,
-  text: string,
+export type Todo = {
+  id: number;
+  completed: boolean;
+  text: string;
 };
 
-const _todos: {[id:number]: Todo}= {};
+const _todos: {[id:number]: Todo} = {};
 const CHANGE_EVENT: string = 'change';
 
 class _TodoStore extends EventEmitter {
@@ -27,15 +27,15 @@ class _TodoStore extends EventEmitter {
     return todos;
   }
 
-  emitChange(event: ?any) {
+  emitChange(event?: any) {
     this.emit(CHANGE_EVENT, event);
   }
 
-  addChangeListener(callback: (event: ?any) => void) {
+  addChangeListener(callback: (event?: any) => void) {
     this.on(CHANGE_EVENT, callback);
   }
 
-  removeChangeListener(callback: (event: ?any) => void) {
+  removeChangeListener(callback: (event?: any) => void) {
     this.removeListener(CHANGE_EVENT, callback);
   }
 }
@@ -43,7 +43,7 @@ class _TodoStore extends EventEmitter {
 const TodoStore: _TodoStore = new _TodoStore();
 export default TodoStore;
 
-dispatcher.register((action: {type: string, id: ?number, text: ?string}) => {
+dispatcher.register((action: {type: string, id?: number, text?: string}) => {
   switch (action.type) {
     case constants.TODO_CREATE:
       let text = action.text.trim();
