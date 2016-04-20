@@ -1,46 +1,49 @@
 /// <reference path="../../typings/main.d.ts" />
 
-/**
- * Created by kumagai on 2016/04/04.
- */
+// @flow
 'use strict';
 
 import dispatcher from '../dispatcher/dispatcher';
 import constants from '../constant/todo-constants';
 import {EventEmitter} from 'events';
 
-const _todos = {};
+type Todo = {
+  id: number,
+  completed: boolean,
+  text: string,
+};
 
-const CHANGE_EVENT = 'change';
+const _todos: {[id:number]: Todo}= {};
+const CHANGE_EVENT: string = 'change';
 
 class _TodoStore extends EventEmitter {
 
   getTodos() {
     // ListViewを使う場合、配列にしておかないといけない模様。
-    const todos = [];
+    const todos: Array<Todo> = [];
     for (let key in _todos) {
       todos.push(_todos[key]);
     }
     return todos;
   }
 
-  emitChange(event) {
+  emitChange(event: ?any) {
     this.emit(CHANGE_EVENT, event);
   }
 
-  addChangeListener(callback) {
+  addChangeListener(callback: (event: ?any) => void) {
     this.on(CHANGE_EVENT, callback);
   }
 
-  removeChangeListener(callback) {
+  removeChangeListener(callback: (event: ?any) => void) {
     this.removeListener(CHANGE_EVENT, callback);
   }
 }
 
-const TodoStore = new _TodoStore();
+const TodoStore: _TodoStore = new _TodoStore();
 export default TodoStore;
 
-dispatcher.register(action => {
+dispatcher.register((action: {type: string, id: ?number, text: ?string}) => {
   switch (action.type) {
     case constants.TODO_CREATE:
       let text = action.text.trim();
@@ -70,8 +73,8 @@ dispatcher.register(action => {
   }
 });
 
-function create(text) {
-  const id = Date.now() + Math.round(Math.random() * 1000);
+function create(text: string) {
+  const id: number = Date.now() + Math.round(Math.random() * 1000);
   _todos[id] = {
     id: id,
     completed: false,
@@ -80,7 +83,7 @@ function create(text) {
   console.log(`Created TODO: ${text}`);
 }
 
-function update(id, updates) {
+function update(id: number, updates: {completed: boolean}) {
   _todos[id] = Object.assign({}, _todos[id], updates);
   console.log(`Updated: ${id}-${updates.completed}`)
 }

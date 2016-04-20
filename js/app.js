@@ -16,8 +16,12 @@ import React, {
   ToastAndroid,
 } from 'react-native';
 
-export default class TodoApp extends Component {
+type Event = {
+  type: ?string
+};
 
+export default class TodoApp extends Component {
+  
   constructor(props) {
     super(props);
 
@@ -32,11 +36,11 @@ export default class TodoApp extends Component {
     this.setState({
       todos: this.state.todos.cloneWithRows(TodoStore.getTodos())
     });
-    TodoStore.addChangeListener((event) => this._onChanged(event));
+    TodoStore.addChangeListener((event: ?Event) => this._onChanged(event));
   }
 
   componentWillUnmount() {
-    TodoStore.removeChangeListener((event) => this._onChanged(event));
+    TodoStore.removeChangeListener((event: ?Event) => this._onChanged(event));
   }
   
   render() {
@@ -50,7 +54,7 @@ export default class TodoApp extends Component {
     );
   }
 
-  _onChanged(event) {
+  _onChanged(event: ?Event) {
     this.setState({
       todos: this.state.todos.cloneWithRows(TodoStore.getTodos())
     });
@@ -63,7 +67,7 @@ export default class TodoApp extends Component {
     }
   }
 
-  _showCompletedToast(event) {
+  _showCompletedToast(event: ?Event) {
     if (event.deleted) {
       ToastAndroid.show("Clear completed TODO", ToastAndroid.SHORT);
     }

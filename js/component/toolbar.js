@@ -1,5 +1,6 @@
 /// <reference path="../../typings/main.d.ts" />
 
+// @flow
 'use strict';
 
 import TodoActions from "../action/todo-actions";
@@ -9,13 +10,19 @@ import React, {
   ToolbarAndroid,
 } from 'react-native';
 
-const POSITION_COMPLETE_ALL = 0;
-const POSITION_CLEAR = 1;
+type Action = {
+  title: string,
+  icon: any,
+  show: ?string
+};
+
+const POSITION_COMPLETE_ALL: number = 0;
+const POSITION_CLEAR: number = 1;
 
 class Toolbar extends Component {
   
   render() {
-    const actions = [
+    const actions: Array<Action> = [
       // complete all
       {
         title: 'Complete All',
@@ -36,12 +43,12 @@ class Toolbar extends Component {
         overflowIcon={require('./img/overflow.png')}
         style={styles.toolbar}
         actions={actions}
-        onActionSelected={position => this._onActionSelected(position)}
+        onActionSelected={(position: number) => this._onActionSelected(position)}
       />
     )
   }
   
-  _onActionSelected(position) {
+  _onActionSelected(position: number) {
     switch (position) {
       case POSITION_COMPLETE_ALL:
         TodoActions.completeAll();

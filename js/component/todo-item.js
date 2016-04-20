@@ -1,5 +1,6 @@
 /// <reference path="../../typings/main.d.ts" />
 
+// @flow
 'use strict';
 
 import {CheckboxAndroid} from './lib/android-checkbox'; // FIXME: default
@@ -27,7 +28,7 @@ export default class TodoItem extends Component {
           <CheckboxAndroid
             style={styles.completeBox}
             value={this.props.todo.completed}
-            onValueChange={(value) => this._onToggleCompleted(value)}
+            onValueChange={(value: boolean) => this._onToggleCompleted(value)}
           />
           <Text
             style={textStyle}
@@ -42,7 +43,7 @@ export default class TodoItem extends Component {
   _onPressRow() {
   }
 
-  _onToggleCompleted(value) {
+  _onToggleCompleted(value: boolean) {
     console.log(`toggle completed to ${value}`);
     TodoActions.updateCompleted(this.props.todo.id, value);
   }
