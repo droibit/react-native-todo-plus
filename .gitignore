@@ -36,3 +36,7 @@ npm-debug.log
 
 # typings
 typings/
+
+# BUCK
+buck-out/
+\.buckd/
